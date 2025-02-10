@@ -11,13 +11,18 @@ export default function Massage() {
     e.preventDefault();
     if (!message || !author) return;
 
+    if (message.length > 500) {
+      return Swal.fire({ icon: 'error', title: 'เฮ้! คุณพิมพ์เยอะไปแล้วนะ'});
+    }
+
     const res = await fetch("/api/message", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message, author }),
     });
+    const json = await res.json();
     if (!res.ok) {
-      return Swal.fire({ icon: 'error', title: 'ไม่สามารถส่งข้อความได้'});
+      return Swal.fire({ icon: 'error', title: 'ไม่สามารถส่งข้อความได้', text: json.error});
     }
     Swal.fire({ icon: 'success', title: 'เราได้บันทึกข้อความของคุณใว้แล้ว', timer: 2000, showConfirmButton: false});
     setMessage("");

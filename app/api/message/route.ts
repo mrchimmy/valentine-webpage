@@ -12,6 +12,10 @@ export async function POST(req: Request) {
   if (!message || !author) {
     return NextResponse.json({ error: "Missing text or author" }, { status: 400 });
   }
+  if (message.length > 500) {
+    
+    return NextResponse.json({ error: "เฮ้! คุณพิมพ์เยอะไปแล้วนะ" }, { status: 400 });
+  }
 
   const newMessage = await addMessage(message, author);
 
