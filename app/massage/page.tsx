@@ -6,9 +6,11 @@ import Swal from "sweetalert2";
 
 export default function Massage() {
   const [message, setMessage] = useState("");
-  const [author, setAuthor] = useState("")
+  const [author, setAuthor] = useState("");
+  const [isLoadBtn, setLoadBtn] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoadBtn(true);
     if (!message || !author) return;
 
     if (message.length > 500) {
@@ -22,8 +24,10 @@ export default function Massage() {
     });
     const json = await res.json();
     if (!res.ok) {
+      setLoadBtn(false);
       return Swal.fire({ icon: 'error', title: 'ไม่สามารถส่งข้อความได้', text: json.error});
     }
+    setLoadBtn(false);
     Swal.fire({ icon: 'success', title: 'เราได้บันทึกข้อความของคุณใว้แล้ว', timer: 2000, showConfirmButton: false});
     setMessage("");
   };
@@ -47,7 +51,7 @@ export default function Massage() {
           <textarea id="nickname" className="_input" placeholder="กรอกข้อความ พลังบวก" cols={30} rows={4} onChange={e => setMessage(e.target.value)} value={message}></textarea>
         </div>
         <div className="mb-2">
-          <button onClick={handleSubmit} className="bg-valentine w-full py-2 rounded-md hover:shadow-md duration-200 active:bg-valentine/60">บันทึกข้อความ</button>
+          <button onClick={handleSubmit} disabled={isLoadBtn} className="disabled:bg-valentine/60 bg-valentine w-full py-2 rounded-md hover:shadow-md duration-200 active:bg-valentine/60">{!isLoadBtn ? 'บันทึกข้อความ' : 'Loading....'}</button>
         </div>
         <div>
           <Link href={'/'} className="block text-center border-2 border-solid border-valentine w-full py-2 rounded-md hover:shadow-md duration-200 active:bg-valentine/60">ดูข้อความ</Link>
