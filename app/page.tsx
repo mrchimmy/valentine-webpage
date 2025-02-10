@@ -28,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 p-4 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 p-4 gap-6 max-sm:mb-6">
       <Link href="/massage"
         className="bg-valentine/40 dark:bg-valentine/60 backdrop-blur-lg p-4 rounded-2xl cursor-pointer shadow-md flex items-center justify-center hover:bg-valentine/50 duration-200"
       >
