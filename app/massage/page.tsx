@@ -11,9 +11,10 @@ export default function Massage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoadBtn(true);
-    if (!message || !author) return;
+    if (!message || !author) return setLoadBtn(false);;
 
     if (message.length > 500) {
+      setLoadBtn(false);
       return Swal.fire({ icon: 'error', title: 'เฮ้! คุณพิมพ์เยอะไปแล้วนะ'});
     }
 
