@@ -3,19 +3,43 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --valentine: #e24767;
+  --dark: linear-gradient(45deg, #e24767 0%, #000 70%, #64202d 100%);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* color: var(--foreground); */
+  /* background: var(--background); */
+  /* background: linear-gradient(); */
+  min-height: 100vh;
+  font-family: "itim", Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .dark-background {
+    background: var(--dark);
+  }
+}
+
+::-webkit-scrollbar {
+  background: var(--valentine);
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 8px;
+}
+
+._input {
+  all: unset;
+  font-size: 24px;
+  @apply border-2 border-solid border-valentine/50 px-2 rounded-lg duration-200;
+}
+._input:focus {
+  @apply border-valentine
+}
+._input::placeholder {
+  @apply text-white/60 text-lg;
 }
