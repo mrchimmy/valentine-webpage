@@ -9,8 +9,8 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const { message, author } = await req.json();
-  if (!message || !author) {
-    return NextResponse.json({ error: "Missing text or author" }, { status: 400 });
+  if (!message) {
+    return NextResponse.json({ error: "Missing text" }, { status: 400 });
   }
   if (message.length > 500) {
     

@@ -11,7 +11,7 @@ export const getMessages = unstable_cache(async () => {
 // เพิ่มข้อความใหม่ และเคลียร์แคช
 export async function addMessage(message: string, author: string) {
   const newMessage = await prisma.message.create({
-    data: { message, author },
+    data: { message, author: author ? author : "" },
   });
 
   // รีเซ็ตแคช

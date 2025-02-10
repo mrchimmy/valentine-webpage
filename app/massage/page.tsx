@@ -11,7 +11,7 @@ export default function Massage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoadBtn(true);
-    if (!message || !author) return setLoadBtn(false);;
+    if (!message) return setLoadBtn(false);;
 
     if (message.length > 500) {
       setLoadBtn(false);
