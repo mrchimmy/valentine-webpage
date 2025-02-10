@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const ITEM_COUNT = 20; // จำนวนไอเท็มที่ตก (รวมทั้งหัวใจและช็อกโกแลต)
-const ITEMS = ["❤️", "🍫"]; // ไอเท็มที่ตกลงมา (หัวใจ และ ช็อกโกแลต)
+const ITEMS = ["❤️", "🍫", "🤍"]; // ไอเท็มที่ตกลงมา (หัวใจ และ ช็อกโกแลต)
 
 export default function FallingItems() {
   const [fallingItems, setFallingItems] = useState<{ id: number; left: string; delay: number; symbol: string }[]>([]);

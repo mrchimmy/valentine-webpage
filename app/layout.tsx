@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import ThemeToggle from "./components/theme";
 import FallingHearts from "./components/falling-hearts";
+import { Footer } from "./components/footer";
 
 const geistItim = Itim({
   variable: "--font-itim-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
           {children}
           <ThemeToggle />
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );
